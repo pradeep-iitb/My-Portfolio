@@ -1,0 +1,703 @@
+@import "tailwindcss";
+
+/* Custom Font Definitions */
+@font-face {
+  font-family: 'Quantico';
+  src: url('/Fonts/Quantico/Quantico-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Quantico';
+  src: url('/Fonts/Quantico/Quantico-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Quantico';
+  src: url('/Fonts/Quantico/Quantico-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Quantico';
+  src: url('/Fonts/Quantico/Quantico-BoldItalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Red Hat Display';
+  src: url('/Fonts/Red_Hat_Display/RedHatDisplay-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Red Hat Display';
+  src: url('/Fonts/Red_Hat_Display/RedHatDisplay-Italic-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* MedievalSharp Font */
+@font-face {
+  font-family: 'MedievalSharp';
+  src: url('/Fonts/MedievalSharp/MedievalSharp-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Imperial Script Font */
+@font-face {
+  font-family: 'Imperial Script';
+  src: url('/Fonts/Imperial_Script/ImperialScript-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Neuton Font */
+@font-face {
+  font-family: 'Neuton';
+  src: url('/Fonts/Neuton/Neuton-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neuton';
+  src: url('/Fonts/Neuton/Neuton-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neuton';
+  src: url('/Fonts/Neuton/Neuton-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neuton';
+  src: url('/Fonts/Neuton/Neuton-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neuton';
+  src: url('/Fonts/Neuton/Neuton-ExtraLight.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neuton';
+  src: url('/Fonts/Neuton/Neuton-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Felipa Font */
+@font-face {
+  font-family: 'Felipa';
+  src: url('/Fonts/Felipa/Felipa-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Story Script Font */
+@font-face {
+  font-family: 'Story Script';
+  src: url('/Fonts/Story_Script/StoryScript-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Custom CSS Variables for Hacking Theme */
+:root {
+  --color-primary: #00ffff;
+  --color-primary-dim: rgba(0, 255, 255, 0.7);
+  --color-primary-glow: rgba(0, 255, 255, 0.3);
+  --color-secondary: #8a2be2;
+  --color-secondary-dim: rgba(138, 43, 226, 0.7);
+  --color-secondary-glow: rgba(138, 43, 226, 0.3);
+  --color-bg-dark: #020625;
+  --color-bg-terminal: #0a1628;
+  --color-text: #e0e0e0;
+  --font-heading: 'Quantico', sans-serif;
+  --font-body: 'Red Hat Display', sans-serif;
+  --font-mono: 'Courier New', Courier, monospace;
+  --font-medieval: 'MedievalSharp', serif;
+  --font-imperial: 'Imperial Script', cursive;
+  --font-neuton: 'Neuton', serif;
+  --font-felipa: 'Felipa', cursive;
+  --font-story: 'Story Script', cursive;
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg-dark);
+  color: var(--color-text);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headings use Quantico font */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+/* Mono elements use monospace */
+code, pre, .font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Custom Scrollbar - Hacking Theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary-dim);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
+
+/* Selection Color */
+::selection {
+  background: var(--color-primary);
+  color: #000;
+}
+
+/* Glitch Animation */
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+.glitch {
+  animation: glitch 0.3s ease infinite;
+}
+
+/* Text Glow Effect */
+.text-glow {
+  text-shadow: 0 0 10px var(--color-primary),
+               0 0 20px var(--color-primary),
+               0 0 40px var(--color-primary-dim);
+}
+
+/* Box Glow Effect */
+.box-glow {
+  box-shadow: 0 0 20px var(--color-primary-glow),
+              inset 0 0 20px var(--color-primary-glow);
+}
+
+/* Scanline Effect */
+.scanlines {
+  position: relative;
+}
+
+.scanlines::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 255, 65, 0.03) 2px,
+    rgba(0, 255, 65, 0.03) 4px
+  );
+  pointer-events: none;
+}
+
+/* Animated Scanline - Single glowing line moving up and down */
+@keyframes scanlineMove {
+  0% {
+    top: 0%;
+  }
+  50% {
+    top: 100%;
+  }
+  100% {
+    top: 0%;
+  }
+}
+
+.animate-scanline {
+  animation: scanlineMove 3s ease-in-out infinite;
+}
+
+/* Terminal Cursor Blink */
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+.cursor-blink {
+  animation: blink 1s infinite;
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease forwards;
+}
+
+/* Glitch Text Effect */
+.glitch-text {
+  position: relative;
+  display: inline-block;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+}
+
+.glitch-text::before {
+  animation: glitch-anim-1 2s infinite linear alternate-reverse;
+  clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+  transform: translateX(-2px);
+  color: #ff00ff;
+  opacity: 0.8;
+}
+
+.glitch-text::after {
+  animation: glitch-anim-2 2s infinite linear alternate-reverse;
+  clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+  transform: translateX(2px);
+  color: #00ffff;
+  opacity: 0.8;
+}
+
+@keyframes glitch-anim-1 {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  20% {
+    transform: translateX(-3px) skewX(-5deg);
+    opacity: 0.8;
+  }
+  40% {
+    transform: translateX(3px);
+    opacity: 0;
+  }
+  60% {
+    transform: translateX(-2px) skewX(3deg);
+    opacity: 0.6;
+  }
+  80% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(2px);
+    opacity: 0.7;
+  }
+}
+
+@keyframes glitch-anim-2 {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  25% {
+    transform: translateX(2px) skewX(2deg);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateX(-3px);
+    opacity: 0;
+  }
+  75% {
+    transform: translateX(3px) skewX(-3deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateX(-2px);
+    opacity: 0;
+  }
+}
+
+/* Scanning line animation */
+@keyframes scan {
+  0% {
+    top: -10%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  90% {
+    opacity: 0.5;
+  }
+  100% {
+    top: 110%;
+    opacity: 0;
+  }
+}
+
+.animate-scan {
+  animation: scan 3s linear infinite;
+}
+
+/* Neon text glow */
+.neon-cyan {
+  text-shadow: 
+    0 0 5px #00ffff,
+    0 0 10px #00ffff,
+    0 0 20px #00ffff,
+    0 0 40px #00ffff;
+}
+
+.neon-purple {
+  text-shadow: 
+    0 0 5px #8a2be2,
+    0 0 10px #8a2be2,
+    0 0 20px #8a2be2,
+    0 0 40px #8a2be2;
+}
+
+/* Cyber button hover effect */
+.cyber-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.cyber-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.cyber-btn:hover::before {
+  left: 100%;
+}
+
+/* Floating animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Border glow pulse */
+@keyframes border-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.4), 0 0 40px rgba(138, 43, 226, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.6), 0 0 60px rgba(138, 43, 226, 0.4);
+  }
+}
+
+.glow-pulse {
+  animation: border-glow 2s ease-in-out infinite;
+}
+
+/* Star Border Animations */
+@keyframes star-movement-bottom {
+  0% {
+    transform: translate(0%, 0%);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-100%, 0%);
+    opacity: 0;
+  }
+}
+
+@keyframes star-movement-top {
+  0% {
+    transform: translate(0%, 0%);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(100%, 0%);
+    opacity: 0;
+  }
+}
+
+.animate-star-movement-bottom {
+  animation: star-movement-bottom linear infinite alternate;
+}
+
+.animate-star-movement-top {
+  animation: star-movement-top linear infinite alternate;
+}
+
+/* Interactive Gradient Background */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.interactive-gradient {
+  background: linear-gradient(-45deg, #00ffff, #8a2be2, #ff00ff, #00ffff);
+  background-size: 400% 400%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+/* Terminal typing animation */
+@keyframes blink-caret {
+  0%, 50% {
+    border-color: #00ff88;
+  }
+  51%, 100% {
+    border-color: transparent;
+  }
+}
+
+.terminal-caret {
+  border-right: 2px solid #00ff88;
+  animation: blink-caret 1s step-end infinite;
+}
+
+/* ==================== MOBILE & TABLET RESPONSIVE STYLES ==================== */
+
+/* Mobile First Adjustments */
+@media (max-width: 640px) {
+  /* Smaller text on mobile */
+  h1 {
+    font-size: 2.5rem !important;
+    line-height: 1.1;
+  }
+  
+  h2 {
+    font-size: 1.75rem !important;
+  }
+  
+  /* Reduce padding on mobile */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* Stack hero content */
+  .flex-col.lg\:flex-row {
+    gap: 2rem;
+  }
+  
+  /* Smaller hero image on mobile */
+  .w-\[300px\] {
+    width: 250px !important;
+  }
+  
+  /* Smaller buttons on mobile */
+  .w-\[180px\] {
+    width: 150px !important;
+    height: 45px !important;
+    font-size: 0.75rem;
+  }
+  
+  /* Smaller section title lines */
+  .w-16 {
+    width: 2rem;
+  }
+  
+  /* Reduce card padding */
+  .p-6 {
+    padding: 1rem;
+  }
+  
+  /* Smaller rotating text */
+  .text-2xl.md\:text-3xl {
+    font-size: 1.25rem !important;
+  }
+  
+  /* Contact grid - single column */
+  .grid-cols-1.md\:grid-cols-2.lg\:grid-cols-4 {
+    gap: 1rem;
+  }
+  
+  /* Hide decorative elements on mobile */
+  .absolute.top-20.left-10,
+  .absolute.bottom-20.right-10,
+  .absolute.top-40.left-10,
+  .absolute.bottom-40.right-10,
+  .absolute.top-1\/4.right-20,
+  .absolute.bottom-1\/4.left-20,
+  .absolute.top-1\/3.left-10,
+  .absolute.bottom-1\/3.right-10 {
+    display: none;
+  }
+}
+
+/* Tablet Adjustments */
+@media (min-width: 641px) and (max-width: 1024px) {
+  h1 {
+    font-size: 3.5rem !important;
+  }
+  
+  h2 {
+    font-size: 2.25rem !important;
+  }
+  
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  
+  /* Two column grid for certifications/projects on tablet */
+  .grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  
+  /* Two column for contact on tablet */
+  .grid-cols-1.md\:grid-cols-2.lg\:grid-cols-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Ensure touch-friendly tap targets */
+@media (hover: none) and (pointer: coarse) {
+  a, button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Disable hover effects on touch devices */
+  .group:hover .group-hover\:opacity-100 {
+    opacity: inherit;
+  }
+  
+  .hover\:scale-105:active {
+    transform: scale(1.05);
+  }
+}
+
+/* Landscape mobile orientation */
+@media (max-height: 500px) and (orientation: landscape) {
+  .min-h-screen {
+    min-height: auto;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  
+  section {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+}
+
+/* Reduce animation intensity on mobile for performance */
+@media (max-width: 768px) {
+  .animate-pulse {
+    animation-duration: 3s;
+  }
+  
+  .animate-scanline {
+    animation-duration: 4s;
+  }
+  
+  /* Smaller blur effects for performance */
+  .blur-xl {
+    filter: blur(12px);
+  }
+}
+
+/* Safe area insets for notched devices */
+@supports (padding: max(0px)) {
+  .container {
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+  }
+  
+  section:last-child {
+    padding-bottom: max(2rem, env(safe-area-inset-bottom));
+  }
+}
