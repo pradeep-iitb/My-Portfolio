@@ -1,4 +1,6 @@
 import GooeyNav from './GooeyNav';
+import MobileMenu from './MobileMenu';
+import CustomCursor from './CustomCursor';
 import RotatingText from './RotatingText';
 import GridScan from './Gridscan';
 import { useRef } from 'react';
@@ -6,6 +8,7 @@ import LetterGlitch from './LetterGlitch';
 import StarBorder from './StarBorder';
 import LogoLoop from './LogoLoop';
 import { ParticleCard, GlobalSpotlight } from './MagicBento';
+import ElectricBorder from './ElectricBorder';
 
 // Certification data
 const certifications = [
@@ -158,13 +161,19 @@ const MainContent = () => {
   
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#020625' }}>
-      {/* Navigation */}
+      {/* Custom Cursor */}
+      <CustomCursor />
+      
+      {/* Navigation - Desktop */}
       <GooeyNav items={navItems} />
+      
+      {/* Mobile Menu */}
+      <MobileMenu items={navItems} accentColor="#00d4ff" menuButtonColor="#00d4ff" />
       
       {/* Hero Section */}
       <section 
         id="home" 
-        className="relative min-h-screen flex items-center overflow-hidden" 
+        className="relative min-h-screen flex items-center overflow-hidden pt-20 md:pt-0" 
         style={{ backgroundColor: '#020625' }}
       >
         {/* GridScan Background - Amazing cyberpunk effect */}
@@ -341,28 +350,20 @@ const MainContent = () => {
         <div className="relative z-10 container mx-auto px-6 lg:px-12">
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
             
-            {/* Left - Profile Image with Interactive Gradient */}
+            {/* Left - Profile Image with Electric Border */}
             <div className="flex-shrink-0">
-              <div className="relative group">
-                {/* Interactive gradient background */}
-                <div className="absolute -inset-4 interactive-gradient rounded-2xl opacity-60 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
-                <div className="absolute -inset-2 bg-gradient-to-r from-cyan-500 via-purple-500 to-pink-500 rounded-2xl opacity-40 group-hover:opacity-70 transition-opacity duration-300" />
-                
-                {/* Profile Image */}
-                <div className="relative p-1 bg-gradient-to-br from-cyan-400 via-purple-500 to-pink-500 rounded-2xl">
-                  <img 
-                    src="/Images/Profile.png" 
-                    alt="Pradeep Kumawat"
-                    className="w-[280px] md:w-[320px] lg:w-[360px] h-auto object-cover rounded-xl transition-transform duration-500 group-hover:scale-[1.02]"
-                  />
-                </div>
-                
-                {/* Corner decorations */}
-                <div className="absolute -top-2 -left-2 w-6 h-6 border-t-2 border-l-2 border-cyan-400 rounded-tl-lg" />
-                <div className="absolute -top-2 -right-2 w-6 h-6 border-t-2 border-r-2 border-purple-500 rounded-tr-lg" />
-                <div className="absolute -bottom-2 -left-2 w-6 h-6 border-b-2 border-l-2 border-purple-500 rounded-bl-lg" />
-                <div className="absolute -bottom-2 -right-2 w-6 h-6 border-b-2 border-r-2 border-cyan-400 rounded-br-lg" />
-              </div>
+              <ElectricBorder
+                color="#00d4ff"
+                speed={1}
+                chaos={0.08}
+                borderRadius={16}
+              >
+                <img 
+                  src="/Images/Profile.png" 
+                  alt="Pradeep Kumawat"
+                  className="w-[280px] md:w-[320px] lg:w-[360px] h-auto object-cover rounded-xl"
+                />
+              </ElectricBorder>
             </div>
             
             {/* Right - Intro Text */}

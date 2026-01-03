@@ -314,9 +314,15 @@ const GooeyNav = ({
           .nav-item:hover {
             text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
           }
+          /* Hide navbar on mobile - show mobile menu instead */
+          @media (max-width: 1024px) {
+            .gooey-nav-wrapper {
+              display: none !important;
+            }
+          }
         `}
       </style>
-      <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50">
+      <nav className="gooey-nav-wrapper fixed top-6 left-1/2 -translate-x-1/2 z-50">
         <div 
           className="gooey-nav-container rounded-full px-8 py-2"
           ref={containerRef}
