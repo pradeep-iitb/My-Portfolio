@@ -158,7 +158,7 @@ const Scanlines = () => (
 const MainContent = () => {
   const certsGridRef = useRef(null);
   const projectsGridRef = useRef(null);
-  
+
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#020625' }}>
       {/* Custom Cursor */}
@@ -169,7 +169,6 @@ const MainContent = () => {
       
       {/* Mobile Menu */}
       <MobileMenu items={navItems} accentColor="#00d4ff" menuButtonColor="#00d4ff" />
-      
       {/* Hero Section */}
       <section 
         id="home" 
@@ -197,13 +196,9 @@ const MainContent = () => {
           <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
             
             {/* Left Content */}
-            <div className="flex-1 space-y-8">
+            <div className="flex-1">
               {/* Terminal Prompt */}
-              <div className="inline-flex items-center gap-0.8 bg-black/50 backdrop-blur-sm border border-cyan-500/30 rounded-lg px-4 py-2">
-                <span className="text-green-400" style={{ fontFamily: 'var(--font-heading)' }}>pradeep</span>
-                <span className="text-white/60 font-mono">@</span>
-                <span className="text-red-400" style={{ fontFamily: 'var(--font-heading)' }}>root</span>
-                <span className="text-white/60 font-mono">:</span>
+              <div className="flex items-center gap-2 mb-8">
                 <span className="text-blue-400 font-mono">~</span>
                 <span className="text-white font-mono">whoami</span>
               </div>
