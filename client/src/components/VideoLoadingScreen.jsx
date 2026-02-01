@@ -6,6 +6,16 @@ const VideoLoadingScreen = ({ onLoadingComplete }) => {
   const [isVisible, setIsVisible] = useState(true);
   const videoRef = useRef(null);
   const [videoDuration, setVideoDuration] = useState(0);
+  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 640);
+
+  // Handle screen size changes
+  useEffect(() => {
+    const handleResize = () => {
+      setIsLargeScreen(window.innerWidth >= 640);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Get video metadata and set duration
   useEffect(() => {
@@ -93,24 +103,13 @@ const VideoLoadingScreen = ({ onLoadingComplete }) => {
           className="absolute inset-0 w-full h-full object-cover"
           style={{
             objectPosition: 'center',
-            maxHeight: '75vh',
-            top: '50%',
-            transform: 'translateY(-50%)'
+            maxHeight: isLargeScreen ? '100vh' : '75vh',
+            top: isLargeScreen ? '0' : '50%',
+            transform: isLargeScreen ? 'none' : 'translateY(-50%)'
           }}
         >
           <source src="/aceracer_2.mp4" type="video/mp4" />
         </video>
-
-        {/* Fullscreen overlay for tablet and desktop */}
-        <style>{`
-          @media (min-width: 768px) {
-            video {
-              maxHeight: 100vh !important;
-              top: 0 !important;
-              transform: none !important;
-            }
-          }
-        `}</style>
       </div>
 
       {/* Bottom Right Loading Text Container */}
@@ -158,9 +157,7 @@ const VideoLoadingScreen = ({ onLoadingComplete }) => {
           </div>
         </div>
 
-        {/* Decorative Corner Brackets */}
-        <div className="absolute -bottom-4 -right-4 text-cyan-500/40 text-2xl font-bold">]</div>
-        <div className="absolute -top-4 -right-4 text-cyan-500/40 text-2xl font-bold">[</div>
+        
       </div>
 
       {/* Top Left Corner Info */}
@@ -170,8 +167,8 @@ const VideoLoadingScreen = ({ onLoadingComplete }) => {
       </div>
 
       {/* Click for Audio Message - Center Bottom */}
-      <div className="absolute bottom-6 sm:bottom-32 left-1/2 transform -translate-x-1/2 text-center z-20 backdrop-blur-sm bg-black/30 px-4 sm:px-6 py-2 sm:py-3 rounded-lg border border-cyan-500/30 animate-pulse max-w-xs sm:max-w-none">
-        <div className="text-cyan-400 text-xs sm:text-sm font-mono">🔊 Click to unmute</div>
+      <div className="absolute bottom-6 sm:bottom-32 lg:bottom-3 left-1/2 transform -translate-x-1/2 text-center z-20 backdrop-blur-sm bg-black/30 px-4 sm:px-6 py-2 sm:py-3 rounded-lg border border-cyan-500/30 animate-pulse max-w-xs sm:max-w-none">
+        <div className="text-cyan-400 text-xs sm:text-sm font-mono">🔊 Click to unmute </div>
       </div>
     </div>
   );
