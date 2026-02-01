@@ -89,14 +89,20 @@ const VideoLoadingScreen = ({ onLoadingComplete }) => {
         loop={false}
         playsInline
         className="absolute inset-0 w-full h-full object-cover"
+        style={{
+          objectPosition: 'center',
+          maxHeight: '75vh',
+          top: '50%',
+          transform: 'translateY(-50%)'
+        }}
       >
         <source src="/aceracer_2.mp4" type="video/mp4" />
       </video>
 
       {/* Bottom Right Loading Text Container */}
-      <div className="absolute bottom-8 right-8 z-20 backdrop-blur-sm bg-black/20 px-6 py-4 rounded-lg">
+      <div className="absolute bottom-20 sm:bottom-12 right-4 sm:right-8 z-20 backdrop-blur-sm bg-black/20 px-4 sm:px-6 py-3 sm:py-4 rounded-lg max-w-xs sm:max-w-none">
         {/* Loading Text */}
-        <div className="space-y-3">
+        <div className="space-y-2 sm:space-y-3">
           <div
             className="text-right"
             style={{
@@ -104,7 +110,7 @@ const VideoLoadingScreen = ({ onLoadingComplete }) => {
             }}
           >
             {/* Animated Loading Text */}
-            <div className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-cyan-400 animate-pulse">
+            <div className="text-lg sm:text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-cyan-400 animate-pulse">
               Loading
               <span className="inline-block ml-1">
                 <span className="animate-bounce" style={{ animationDelay: '0s' }}>.</span>
@@ -114,13 +120,13 @@ const VideoLoadingScreen = ({ onLoadingComplete }) => {
             </div>
 
             {/* Progress Percentage */}
-            <div className="text-sm text-cyan-300/80 mt-2 font-mono">
+            <div className="text-xs sm:text-sm text-cyan-300/80 mt-2 font-mono">
               {Math.round(progress)}%
             </div>
           </div>
 
           {/* Decorative Progress Bar */}
-          <div className="w-32 h-0.5 bg-cyan-900/30 rounded-full overflow-hidden border border-cyan-500/20">
+          <div className="w-24 sm:w-32 h-0.5 bg-cyan-900/30 rounded-full overflow-hidden border border-cyan-500/20">
             <div
               className="h-full bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full"
               style={{
@@ -132,7 +138,7 @@ const VideoLoadingScreen = ({ onLoadingComplete }) => {
           </div>
 
           {/* Status Text */}
-          <div className="text-xs text-cyan-400/70 mt-3 space-y-1">
+          <div className="text-xs text-cyan-400/70 mt-2 sm:mt-3 space-y-0.5 sm:space-y-1">
             <div>Initializing system...</div>
             <div className="text-purple-400/70">Preparing environment</div>
           </div>
@@ -144,14 +150,14 @@ const VideoLoadingScreen = ({ onLoadingComplete }) => {
       </div>
 
       {/* Top Left Corner Info */}
-      <div className="absolute top-8 left-8 text-cyan-500 text-xs font-mono z-20 backdrop-blur-sm bg-black/20 px-4 py-3 rounded-lg">
+      <div className="absolute top-4 sm:top-8 left-4 sm:left-8 text-cyan-500 text-xs font-mono z-20 backdrop-blur-sm bg-black/20 px-3 sm:px-4 py-2 sm:py-3 rounded-lg">
         <div>SYSTEM: {Math.floor(Math.random() * 9999)}</div>
         <div>STATUS: LOADING</div>
       </div>
 
       {/* Click for Audio Message - Center Bottom */}
-      <div className="absolute bottom-15 left-1/2 transform -translate-x-1/2 text-center z-20 backdrop-blur-sm bg-black/30 px-6 py-3 rounded-lg border border-cyan-500/30 animate-pulse">
-        <div className="text-cyan-400 text-sm font-mono">🔊 Click anywhere to unmute audio</div>
+      <div className="absolute bottom-6 sm:bottom-32 left-1/2 transform -translate-x-1/2 text-center z-20 backdrop-blur-sm bg-black/30 px-4 sm:px-6 py-2 sm:py-3 rounded-lg border border-cyan-500/30 animate-pulse max-w-xs sm:max-w-none">
+        <div className="text-cyan-400 text-xs sm:text-sm font-mono">🔊 Click to unmute</div>
       </div>
     </div>
   );

@@ -196,7 +196,7 @@ const MainContent = () => {
           <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16 px-4 md:px-8 will-change-transform">
             
             {/* Left Content */}
-            <div className="flex-1 pr-0 md:pr-8 space-y-5 pt-12">
+            <div className="flex-1 pr-0 md:pr-8 space-y-5 -mt-15 md:mt-0">
               {/* Terminal Prompt */}
               <div className="flex items-center gap-3 pb-4 border-b border-cyan-500/30">
                 <span className="text-blue-400 font-mono text-lg sm:text-xl font-bold">~</span>
@@ -285,7 +285,7 @@ const MainContent = () => {
             </div>
             
             {/* Right Content - Hacker Image Card */}
-            <div className="flex-1 flex justify-center lg:justify-end pl-0 md:pl-8">
+            <div className="flex-1 flex justify-center lg:justify-end pl-0 md:pl-8 scale-75 sm:scale-90 md:scale-100 origin-center md:origin-right">
               <div className="relative group">
                 {/* Glow effects behind the card */}
                 <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500/20 via-purple-500/20 to-pink-500/20 rounded-2xl blur-xl opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
