@@ -82,22 +82,36 @@ const VideoLoadingScreen = ({ onLoadingComplete }) => {
       }}
     >
       {/* Video Background - Full and Clear */}
-      <video
-        ref={videoRef}
-        autoPlay
-        muted
-        loop={false}
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover"
-        style={{
-          objectPosition: 'center',
-          maxHeight: '75vh',
-          top: '50%',
-          transform: 'translateY(-50%)'
-        }}
-      >
-        <source src="/aceracer_2.mp4" type="video/mp4" />
-      </video>
+      {/* Video Background - Full and Clear */}
+      <div className="absolute inset-0 w-full h-full overflow-hidden">
+        <video
+          ref={videoRef}
+          autoPlay
+          muted
+          loop={false}
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{
+            objectPosition: 'center',
+            maxHeight: '75vh',
+            top: '50%',
+            transform: 'translateY(-50%)'
+          }}
+        >
+          <source src="/aceracer_2.mp4" type="video/mp4" />
+        </video>
+
+        {/* Fullscreen overlay for tablet and desktop */}
+        <style>{`
+          @media (min-width: 768px) {
+            video {
+              maxHeight: 100vh !important;
+              top: 0 !important;
+              transform: none !important;
+            }
+          }
+        `}</style>
+      </div>
 
       {/* Bottom Right Loading Text Container */}
       <div className="absolute bottom-20 sm:bottom-12 right-4 sm:right-8 z-20 backdrop-blur-sm bg-black/20 px-4 sm:px-6 py-3 sm:py-4 rounded-lg max-w-xs sm:max-w-none">
