@@ -40,7 +40,7 @@ const VideoLoadingScreen = ({ onLoadingComplete }) => {
       setProgress(100);
       gsap.to('.video-loading-screen', {
         opacity: 0,
-        duration: 0.5,
+        duration: 0.8,
         ease: 'power2.inOut',
         pointerEvents: 'none',
         onComplete: () => {
@@ -147,6 +147,11 @@ const VideoLoadingScreen = ({ onLoadingComplete }) => {
       <div className="absolute top-8 left-8 text-cyan-500 text-xs font-mono z-20 backdrop-blur-sm bg-black/20 px-4 py-3 rounded-lg">
         <div>SYSTEM: {Math.floor(Math.random() * 9999)}</div>
         <div>STATUS: LOADING</div>
+      </div>
+
+      {/* Click for Audio Message - Center Bottom */}
+      <div className="absolute bottom-15 left-1/2 transform -translate-x-1/2 text-center z-20 backdrop-blur-sm bg-black/30 px-6 py-3 rounded-lg border border-cyan-500/30 animate-pulse">
+        <div className="text-cyan-400 text-sm font-mono">🔊 Click anywhere to unmute audio</div>
       </div>
     </div>
   );

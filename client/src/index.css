@@ -1,6 +1,10 @@
 @import "tailwindcss";
 
 /* Custom Font Definitions */
+
+*{
+  scrollbar-width: none;
+}
 @font-face {
   font-family: 'Quantico';
   src: url('/Fonts/Quantico/Quantico-Regular.ttf') format('truetype');
@@ -167,6 +171,7 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  contain: layout style;
 }
 
 /* Headings use Quantico font */

@@ -192,19 +192,19 @@ const MainContent = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-[#020625]/60 via-transparent to-[#020625]/60 pointer-events-none" />
         
         {/* Main Content */}
-        <div className="relative z-10 container mx-auto px-6 lg:px-12">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
+        <div className="relative z-10 container mx-auto px-6 lg:px-12 py-12 md:py-16 lg:py-20 will-change-transform">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16 px-4 md:px-8 will-change-transform">
             
             {/* Left Content */}
-            <div className="flex-1">
+            <div className="flex-1 pr-0 md:pr-8 space-y-5 pt-12">
               {/* Terminal Prompt */}
-              <div className="flex items-center gap-2 mb-8">
-                <span className="text-blue-400 font-mono">~</span>
-                <span className="text-white font-mono">whoami</span>
+              <div className="flex items-center gap-3 pb-4 border-b border-cyan-500/30">
+                <span className="text-blue-400 font-mono text-lg sm:text-xl font-bold">~</span>
+                <span className="text-cyan-300 font-mono text-lg sm:text-xl font-bold tracking-wider">whoami</span>
               </div>
               
               {/* Name with Glitch Effect */}
-              <div className="space-y-1 sm:space-y-2">
+              <div className="space-y-2 sm:space-y-4">
                 <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-normal pr-4" style={{ fontFamily: 'var(--font-felipa)', overflow: 'visible' }}>
                   <GlitchText className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500">
                     PRADEEP
@@ -218,7 +218,7 @@ const MainContent = () => {
               </div>
               
               {/* Rotating Text Role Box */}
-              <div className="inline-block">
+              <div className="inline-block pt-4">
                 <div 
                   className="relative px-4 sm:px-6 py-2 sm:py-3 rounded-lg overflow-hidden"
                   style={{
@@ -249,7 +249,7 @@ const MainContent = () => {
               </div>
               
               {/* CTA Buttons */}
-              <div className="flex flex-wrap gap-3 sm:gap-4 pt-4">
+              <div className="flex flex-wrap gap-3 sm:gap-4 pt-8">
                 <a 
                   href="#certifications"
                   className="group relative w-[140px] sm:w-[180px] h-[45px] sm:h-[50px] font-bold uppercase tracking-wider transition-all duration-300 overflow-hidden flex items-center justify-center text-xs sm:text-sm"
@@ -285,7 +285,7 @@ const MainContent = () => {
             </div>
             
             {/* Right Content - Hacker Image Card */}
-            <div className="flex-1 flex justify-center lg:justify-end">
+            <div className="flex-1 flex justify-center lg:justify-end pl-0 md:pl-8">
               <div className="relative group">
                 {/* Glow effects behind the card */}
                 <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500/20 via-purple-500/20 to-pink-500/20 rounded-2xl blur-xl opacity-60 group-hover:opacity-100 transition-opacity duration-500" />

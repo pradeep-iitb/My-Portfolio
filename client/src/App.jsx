@@ -84,13 +84,13 @@ const App = () => {
       setTimeout(() => {
         gsap.to(containerRef.current, {
           opacity: 0,
-          scale: 1.1,
-          filter: 'blur(10px)',
-          duration: 0.5,
+          scale: 1.05,
+          filter: 'blur(5px)',
+          duration: 0.8,
           ease: 'power2.inOut',
           onComplete: () => setIsLoading(false),
         });
-      }, 400);
+      }, 300);
     }
   }, [animationComplete, contentReady]);
 
@@ -101,10 +101,28 @@ const App = () => {
         <VideoLoadingScreen onLoadingComplete={() => setIsVideoLoading(false)} />
       )}
 
-      {/* Main Content - Shows after video completes */}
+      {/* Main Content - Shows after video completes with smooth fade-in */}
       {!isVideoLoading && (
         <Suspense fallback={null}>
-          <MainContent />
+          <div
+            style={{
+              animation: 'fadeIn 0.8s ease-in-out',
+            }}
+          >
+            <style>{`
+              @keyframes fadeIn {
+                from {
+                  opacity: 0;
+                  transform: translateY(20px);
+                }
+                to {
+                  opacity: 1;
+                  transform: translateY(0);
+                }
+              }
+            `}</style>
+            <MainContent />
+          </div>
         </Suspense>
       )}
     </div>
