@@ -1,6 +1,5 @@
 import GooeyNav from './GooeyNav';
 import MobileMenu from './MobileMenu';
-import CustomCursor from './CustomCursor';
 import RotatingText from './RotatingText';
 import GridScan from './Gridscan';
 import { useRef } from 'react';
@@ -161,9 +160,6 @@ const MainContent = () => {
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#020625' }}>
-      {/* Custom Cursor */}
-      <CustomCursor />
-      
       {/* Navigation - Desktop */}
       <GooeyNav items={navItems} />
       

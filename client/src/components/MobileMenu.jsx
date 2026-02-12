@@ -172,7 +172,7 @@ const MobileMenu = ({
       {/* Mobile Menu Button - Only visible on mobile */}
       <button
         ref={toggleBtnRef}
-        className="mobile-menu-btn fixed top-6 right-6 z-[60] flex items-center gap-2 bg-black/60 backdrop-blur-md border border-cyan-500/30 rounded-full px-4 py-3 cursor-pointer transition-all duration-300 hover:border-cyan-500/60 hover:bg-black/80"
+        className="mobile-menu-btn fixed top-6 right-6 z-[60] flex items-center gap-2 bg-black/60 backdrop-blur-md border border-cyan-500/30 rounded-full px-4 py-3 transition-all duration-300 hover:border-cyan-500/60 hover:bg-black/80"
         style={{ color: menuButtonColor }}
         aria-label={open ? 'Close menu' : 'Open menu'}
         aria-expanded={open}

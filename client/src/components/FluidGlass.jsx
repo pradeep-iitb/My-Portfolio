@@ -203,8 +203,6 @@ function NavItems({ items }) {
             e.stopPropagation();
             handleNavigate(link);
           }}
-          onPointerOver={() => (document.body.style.cursor = 'pointer')}
-          onPointerOut={() => (document.body.style.cursor = 'auto')}
         >
           {label}
         </Text>

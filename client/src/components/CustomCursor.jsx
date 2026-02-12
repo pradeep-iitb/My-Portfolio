@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
+import { createPortal } from 'react-dom';
 import { gsap } from 'gsap';
 
 const CustomCursor = () => {
@@ -154,12 +155,14 @@ const CustomCursor = () => {
       mouseX = e.clientX;
       mouseY = e.clientY;
       
-      gsap.to(crosshair, {
-        x: mouseX,
-        y: mouseY,
-        duration: 0.08,
-        ease: 'power2.out',
-      });
+      if (crosshair) {
+        gsap.to(crosshair, {
+          x: mouseX,
+          y: mouseY,
+          duration: 0.08,
+          ease: 'power2.out',
+        });
+      }
     };
 
     // Handle hover states
@@ -176,11 +179,13 @@ const CustomCursor = () => {
 
       if (isInteractive) {
         setIsHovering(true);
-        gsap.to(crosshair, {
-          scale: 1.4,
-          duration: 0.2,
-          ease: 'power2.out',
-        });
+        if (crosshair) {
+          gsap.to(crosshair, {
+            scale: 1.4,
+            duration: 0.2,
+            ease: 'power2.out',
+          });
+        }
         gsap.to('.cursor-line', {
           boxShadow: '0 0 10px #00ffff',
           duration: 0.2,
@@ -201,11 +206,13 @@ const CustomCursor = () => {
 
       if (isInteractive) {
         setIsHovering(false);
-        gsap.to(crosshair, {
-          scale: 1,
-          duration: 0.2,
-          ease: 'power2.out',
-        });
+        if (crosshair) {
+          gsap.to(crosshair, {
+            scale: 1,
+            duration: 0.2,
+            ease: 'power2.out',
+          });
+        }
         gsap.to('.cursor-line', {
           boxShadow: '0 0 6px rgba(0, 212, 255, 0.8)',
           duration: 0.2,
@@ -224,11 +231,15 @@ const CustomCursor = () => {
 
     // Hide cursor when leaving window
     const handleMouseLeaveWindow = () => {
-      gsap.to(cursor, { opacity: 0, duration: 0.2 });
+      if (cursor) {
+        gsap.to(cursor, { opacity: 0, duration: 0.2 });
+      }
     };
 
     const handleMouseEnterWindow = () => {
-      gsap.to(cursor, { opacity: 1, duration: 0.2 });
+      if (cursor) {
+        gsap.to(cursor, { opacity: 1, duration: 0.2 });
+      }
     };
 
     document.addEventListener('mouseleave', handleMouseLeaveWindow);
@@ -244,9 +255,20 @@ const CustomCursor = () => {
     };
   }, [playClickAnimation, createTouchEffect]);
 
-  return (
+  if (typeof document === 'undefined') return null;
+
+  return createPortal(
     <>
-      <div ref={cursorRef} className="custom-cursor-container">
+      <div
+        ref={cursorRef}
+        className="custom-cursor-container"
+        style={{
+          position: 'fixed',
+          inset: 0,
+          pointerEvents: 'none',
+          zIndex: 2147483647,
+        }}
+      >
         {/* Crosshair / Plus sign cursor */}
         <div
           ref={crosshairRef}
@@ -255,11 +277,12 @@ const CustomCursor = () => {
             position: 'fixed',
             top: 0,
             left: 0,
-            width: '32px',
-            height: '32px',
+            width: '24px',
+            height: '24px',
             pointerEvents: 'none',
-            zIndex: 9999,
+            zIndex: 2147483647,
             transform: 'translate(-50%, -50%)',
+            filter: 'drop-shadow(0 0 8px rgba(0, 212, 255, 0.6))',
           }}
         >
           {/* Square target brackets */}
@@ -267,41 +290,41 @@ const CustomCursor = () => {
             position: 'absolute',
             top: '0',
             left: '0',
-            width: '6px',
-            height: '6px',
+            width: '4px',
+            height: '4px',
             borderLeft: '1.5px solid #00d4ff',
             borderTop: '1.5px solid #00d4ff',
-            boxShadow: '-1px -1px 4px rgba(0, 212, 255, 0.5)',
+            boxShadow: '-1px -1px 4px rgba(0, 212, 255, 0.8)',
           }} />
           <span style={{
             position: 'absolute',
             top: '0',
             right: '0',
-            width: '6px',
-            height: '6px',
+            width: '4px',
+            height: '4px',
             borderRight: '1.5px solid #00d4ff',
             borderTop: '1.5px solid #00d4ff',
-            boxShadow: '1px -1px 4px rgba(0, 212, 255, 0.5)',
+            boxShadow: '1px -1px 4px rgba(0, 212, 255, 0.8)',
           }} />
           <span style={{
             position: 'absolute',
             bottom: '0',
             left: '0',
-            width: '6px',
-            height: '6px',
+            width: '4px',
+            height: '4px',
             borderLeft: '1.5px solid #00d4ff',
             borderBottom: '1.5px solid #00d4ff',
-            boxShadow: '-1px 1px 4px rgba(0, 212, 255, 0.5)',
+            boxShadow: '-1px 1px 4px rgba(0, 212, 255, 0.8)',
           }} />
           <span style={{
             position: 'absolute',
             bottom: '0',
             right: '0',
-            width: '6px',
-            height: '6px',
+            width: '4px',
+            height: '4px',
             borderRight: '1.5px solid #00d4ff',
             borderBottom: '1.5px solid #00d4ff',
-            boxShadow: '1px 1px 4px rgba(0, 212, 255, 0.5)',
+            boxShadow: '1px 1px 4px rgba(0, 212, 255, 0.8)',
           }} />
 
           {/* Center dot */}
@@ -310,12 +333,12 @@ const CustomCursor = () => {
               position: 'absolute',
               left: '50%',
               top: '50%',
-              width: '3px',
-              height: '3px',
+              width: '2px',
+              height: '2px',
               backgroundColor: '#00d4ff',
               borderRadius: '50%',
               transform: 'translate(-50%, -50%)',
-              boxShadow: '0 0 6px #00d4ff',
+              boxShadow: '0 0 10px #00d4ff, 0 0 20px rgba(0, 212, 255, 0.6)',
             }}
           />
 
@@ -325,13 +348,13 @@ const CustomCursor = () => {
             className="cursor-line"
             style={{
               position: 'absolute',
-              left: '15px',
-              bottom: '20px',
+              left: '11px',
+              bottom: '15px',
               width: '2px',
-              height: '8px',
+              height: '6px',
               background: 'linear-gradient(180deg, #8a2be2, #00d4ff)',
               borderRadius: '1px',
-              boxShadow: '0 0 6px rgba(0, 212, 255, 0.8)',
+              boxShadow: '0 0 8px rgba(0, 212, 255, 1)',
             }}
           />
 
@@ -341,13 +364,13 @@ const CustomCursor = () => {
             className="cursor-line"
             style={{
               position: 'absolute',
-              left: '15px',
-              top: '20px',
+              left: '11px',
+              top: '15px',
               width: '2px',
-              height: '8px',
+              height: '6px',
               background: 'linear-gradient(0deg, #8a2be2, #00d4ff)',
               borderRadius: '1px',
-              boxShadow: '0 0 6px rgba(0, 212, 255, 0.8)',
+              boxShadow: '0 0 8px rgba(0, 212, 255, 1)',
             }}
           />
 
@@ -357,13 +380,13 @@ const CustomCursor = () => {
             className="cursor-line"
             style={{
               position: 'absolute',
-              right: '20px',
-              top: '15px',
-              width: '8px',
+              right: '15px',
+              top: '11px',
+              width: '6px',
               height: '2px',
               background: 'linear-gradient(90deg, #8a2be2, #00d4ff)',
               borderRadius: '1px',
-              boxShadow: '0 0 6px rgba(0, 212, 255, 0.8)',
+              boxShadow: '0 0 8px rgba(0, 212, 255, 1)',
             }}
           />
 
@@ -373,13 +396,13 @@ const CustomCursor = () => {
             className="cursor-line"
             style={{
               position: 'absolute',
-              left: '20px',
-              top: '15px',
-              width: '8px',
+              left: '15px',
+              top: '11px',
+              width: '6px',
               height: '2px',
               background: 'linear-gradient(270deg, #8a2be2, #00d4ff)',
               borderRadius: '1px',
-              boxShadow: '0 0 6px rgba(0, 212, 255, 0.8)',
+              boxShadow: '0 0 8px rgba(0, 212, 255, 1)',
             }}
           />
         </div>
@@ -387,7 +410,12 @@ const CustomCursor = () => {
 
       <style>{`
         @media (hover: hover) {
-          * {
+          body {
+            cursor: none !important;
+          }
+          
+          /* Force no cursor on all interactive elements */
+          a, button, input, select, textarea, [role="button"], [onclick] {
             cursor: none !important;
           }
         }
@@ -398,7 +426,8 @@ const CustomCursor = () => {
           }
         }
       `}</style>
-    </>
+    </>,
+    document.body
   );
 };
 

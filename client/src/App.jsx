@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, lazy, Suspense } from 'react';
 import { gsap } from 'gsap';
 import GridScan from './components/Gridscan';
 import VideoLoadingScreen from './components/VideoLoadingScreen';
+import CustomCursor from './components/CustomCursor';
 
 // Lazy load main content for better performance
 const MainContent = lazy(() => import('./components/MainContent'));
@@ -96,6 +97,7 @@ const App = () => {
 
   return (
     <div className="min-h-screen text-white" style={{ backgroundColor: '#020625' }}>
+      <CustomCursor />
       {/* Video Loading Screen */}
       {isVideoLoading && (
         <VideoLoadingScreen onLoadingComplete={() => setIsVideoLoading(false)} />

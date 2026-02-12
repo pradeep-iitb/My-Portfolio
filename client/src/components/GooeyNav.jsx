@@ -335,7 +335,7 @@ const GooeyNav = ({
               {items.map((item, index) => (
                 <li
                   key={index}
-                  className={`nav-item rounded-full relative cursor-pointer transition-all duration-300 ${
+                  className={`nav-item rounded-full relative transition-all duration-300 ${
                     activeIndex === index ? 'active' : ''
                   }`}
                   style={{

@@ -25,7 +25,7 @@ const AudioToggle = () => {
       aria-label="Enable audio"
     >
       <div
-        className="relative w-14 h-14 flex items-center justify-center rounded-full transition-all duration-300 cursor-pointer hover:scale-110"
+        className="relative w-14 h-14 flex items-center justify-center rounded-full transition-all duration-300 hover:scale-110"
         style={{
           background: 'linear-gradient(135deg, rgba(138, 43, 226, 0.2) 0%, rgba(0, 255, 255, 0.1) 100%)',
           border: '2px solid',
